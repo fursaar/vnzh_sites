@@ -705,7 +705,12 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
   border-radius: 0.65rem;
   padding: 0.7rem;
   color: #182243;
+  font-size: 16px;
+  line-height: 1.35;
+  -webkit-appearance: none;
+  appearance: none;
 }
+.lead-form input { min-height: 46px; }
 .form-status { min-height: 1.2rem; color: #23562d; margin: 0.2rem 0 0; }
 .form-status.error { color: #b62a2a; }
 

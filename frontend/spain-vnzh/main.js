@@ -58,14 +58,27 @@ function initSmoothAnchors() {
 function initLeadModal() {
   const modal = document.querySelector("[data-form-modal]");
   if (!modal) return;
+  let lockScrollY = 0;
 
   const open = () => {
+    lockScrollY = window.scrollY;
     modal.hidden = false;
     document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${lockScrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
   };
   const close = () => {
     modal.hidden = true;
     document.body.style.overflow = "";
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    window.scrollTo(0, lockScrollY);
   };
 
   openLeadFormModal = open;
