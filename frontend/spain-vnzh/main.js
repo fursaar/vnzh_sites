@@ -63,21 +63,11 @@ function initLeadModal() {
   const open = () => {
     lockScrollY = window.scrollY;
     modal.hidden = false;
-    document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${lockScrollY}px`;
-    document.body.style.left = "0";
-    document.body.style.right = "0";
-    document.body.style.width = "100%";
+    document.body.classList.add("modal-open");
   };
   const close = () => {
     modal.hidden = true;
-    document.body.style.overflow = "";
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.left = "";
-    document.body.style.right = "";
-    document.body.style.width = "";
+    document.body.classList.remove("modal-open");
     window.scrollTo(0, lockScrollY);
   };
 
@@ -94,6 +84,24 @@ function initLeadModal() {
   });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !modal.hidden) close();
+  });
+}
+
+function initDisableMobileZoom() {
+  let lastTouchEnd = 0;
+
+  document.addEventListener("touchend", (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+
+  ["gesturestart", "gesturechange", "gestureend"].forEach((eventName) => {
+    document.addEventListener(eventName, (event) => {
+      event.preventDefault();
+    }, { passive: false });
   });
 }
 
@@ -204,5 +212,6 @@ initScrollProgress();
 initHeroParallax();
 initFaqAccordion();
 initLeadForm();
+initDisableMobileZoom();
 
 

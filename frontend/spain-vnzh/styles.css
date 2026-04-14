@@ -181,6 +181,7 @@ body {
 h1 { font-size: clamp(2.4rem, 6vw, 5rem); line-height: 1.08; margin: 0.8rem 0 1rem; max-width: 15ch; }
 h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
 .lead { color: var(--muted); max-width: 58ch; }
+.section h2 { text-align: center; }
 .hero-actions { margin-top: 1rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
 
 .btn {
@@ -226,6 +227,9 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
   margin-bottom: 1.6rem;
   color: var(--muted);
   max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .hero-visual {
@@ -507,6 +511,10 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
   font-size: 0.9rem;
 }
 .compare-cell { padding-left: 0.95rem !important; }
+#comparison h2,
+#comparison .section-subtitle {
+  text-align: center;
+}
 
 .faq-section {
   border-top: 1px solid rgba(90, 53, 40, 0.18);
@@ -707,10 +715,22 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
   color: #182243;
   font-size: 16px;
   line-height: 1.35;
+  font-family: inherit;
   -webkit-appearance: none;
   appearance: none;
 }
 .lead-form input { min-height: 46px; }
+.lead-form textarea { min-height: 120px; }
+
+body.modal-open {
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .modal-backdrop { backdrop-filter: none; }
+}
 .form-status { min-height: 1.2rem; color: #23562d; margin: 0.2rem 0 0; }
 .form-status.error { color: #b62a2a; }
 
