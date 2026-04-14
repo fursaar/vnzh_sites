@@ -680,6 +680,12 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
 }
 .mobile-inline-form .form-status { color: #1f5f30; }
 .mobile-inline-form .form-status.error { color: #b62a2a; }
+.mobile-inline-telegram {
+  display: none;
+  margin-top: 0.7rem;
+  width: 100%;
+  justify-content: center;
+}
 
 .modal-backdrop {
   position: fixed;
@@ -855,7 +861,10 @@ body.modal-open {
   .lead-cta-card { min-height: 360px; }
   .lead-cta-content { padding: 1.6rem 1rem; }
   .lead-cta-content p { font-size: 0.95rem; }
+  .lead-cta-actions,
+  .lead-cta-foot { display: none; }
   .mobile-inline-form { display: grid; }
+  .mobile-inline-telegram { display: inline-flex; }
   .lead-cta-actions { width: 100%; }
   .lead-cta-actions .btn { width: 100%; justify-content: center; text-align: center; }
   .compare-row { grid-template-columns: 1fr; }
@@ -899,6 +908,7 @@ body.modal-open {
   .lead-cta-content { padding: 1.2rem 0.8rem; }
   .lead-cta-content p { font-size: 0.9rem; }
   .mobile-inline-form { margin-top: 0.8rem; padding: 0.75rem; }
+  .mobile-inline-telegram { margin-top: 0.6rem; }
   .modal-backdrop {
     align-items: flex-start;
     padding: max(10px, env(safe-area-inset-top)) 8px max(10px, env(safe-area-inset-bottom));
