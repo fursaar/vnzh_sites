@@ -1,5 +1,4 @@
 const API_URL = "http://127.0.0.1:5000/api/leads";
-let openLeadFormModal = () => {};
 
 function initTopStart() {
   if ("scrollRestoration" in history) {
@@ -48,92 +47,7 @@ function initSmoothAnchors() {
       if (!target) return;
       event.preventDefault();
       target.scrollIntoView({ behavior: "smooth", block: "start" });
-      if (link.hasAttribute("data-open-form-on-arrive")) {
-        setTimeout(() => openLeadFormModal(), 450);
-      }
     });
-  });
-}
-
-function initLeadModal() {
-  const modal = document.querySelector("[data-form-modal]");
-  const modalWindow = modal?.querySelector(".modal-window");
-  const inlineMobileForm = document.querySelector("[data-mobile-inline-form]");
-  if (!modal) return;
-  let lockScrollY = 0;
-  let cleanupViewportListener = () => {};
-  const isMobileLayout = () => window.matchMedia("(max-width: 960px)").matches;
-
-  const applyViewportHeight = () => {
-    if (!modalWindow) return;
-    const vv = window.visualViewport;
-    const visibleHeight = vv ? vv.height : window.innerHeight;
-    const topInset = vv ? vv.offsetTop : 0;
-    const keyboardInset = vv ? Math.max(0, window.innerHeight - (vv.height + vv.offsetTop)) : 0;
-    modal.style.paddingTop = `${Math.max(8, topInset + 8)}px`;
-    modal.style.paddingBottom = `${Math.max(8, keyboardInset + 8)}px`;
-    modalWindow.style.maxHeight = `${Math.max(280, visibleHeight - 16)}px`;
-  };
-
-  const open = () => {
-    if (isMobileLayout()) {
-      const leadSection = document.querySelector("#lead");
-      if (leadSection) {
-        leadSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-      const firstInput = inlineMobileForm?.querySelector("input[name='name']");
-      if (firstInput instanceof HTMLElement) {
-        setTimeout(() => firstInput.focus(), 320);
-      }
-      return;
-    }
-    lockScrollY = window.scrollY;
-    modal.hidden = false;
-    document.body.classList.add("modal-open");
-    applyViewportHeight();
-    const vv = window.visualViewport;
-    if (vv) {
-      const onViewportChange = () => applyViewportHeight();
-      vv.addEventListener("resize", onViewportChange);
-      vv.addEventListener("scroll", onViewportChange);
-      cleanupViewportListener = () => {
-        vv.removeEventListener("resize", onViewportChange);
-        vv.removeEventListener("scroll", onViewportChange);
-      };
-    }
-  };
-  const close = () => {
-    modal.hidden = true;
-    document.body.classList.remove("modal-open");
-    cleanupViewportListener();
-    cleanupViewportListener = () => {};
-    modal.style.paddingTop = "";
-    modal.style.paddingBottom = "";
-    if (modalWindow) modalWindow.style.maxHeight = "";
-    window.scrollTo(0, lockScrollY);
-  };
-
-  openLeadFormModal = open;
-
-  document.querySelectorAll("[data-open-form]").forEach((btn) => {
-    btn.addEventListener("click", open);
-  });
-  modal.querySelectorAll("[data-close-form]").forEach((btn) => {
-    btn.addEventListener("click", close);
-  });
-  modal.addEventListener("click", (event) => {
-    if (event.target === modal) close();
-  });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !modal.hidden) close();
-  });
-  modal.addEventListener("focusin", (event) => {
-    const target = event.target;
-    if (!(target instanceof HTMLElement)) return;
-    if (!target.matches("input, textarea")) return;
-    setTimeout(() => {
-      target.scrollIntoView({ block: "nearest", inline: "nearest" });
-    }, 120);
   });
 }
 
@@ -245,7 +159,6 @@ function initFaqAccordion() {
 initTopStart();
 initStickyNav();
 initMobileMenu();
-initLeadModal();
 initSmoothAnchors();
 initRevealAnimations();
 initScrollProgress();

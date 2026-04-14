@@ -137,15 +137,18 @@ body {
 }
 .nav-links a:hover { color: #8c4216; }
 .telegram-link {
-  padding: 0.34rem 0.68rem;
+  padding: 0 0.68rem;
+  min-width: 146px;
+  height: 36px;
+  justify-content: center;
   border-radius: 999px;
   border: 1px solid #2190d8;
   background: linear-gradient(180deg, #39acec, #2297dd);
   color: #fff !important;
   gap: 0.42rem;
   box-shadow: 0 5px 12px rgba(30, 150, 219, 0.24);
-  font-weight: 500 !important;
-  font-size: 0.88rem;
+  font-weight: 600 !important;
+  font-size: 0.86rem;
   letter-spacing: 0.01em;
 }
 .telegram-link img {
@@ -156,6 +159,30 @@ body {
 .telegram-link:hover {
   color: #fff !important;
   filter: brightness(1.03);
+}
+.instagram-link {
+  padding: 0 0.64rem;
+  min-width: 146px;
+  height: 36px;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 89, 76, 0.24);
+  background: #fff;
+  color: #7a5849 !important;
+  gap: 0.36rem;
+  font-weight: 600 !important;
+  font-size: 0.86rem;
+  letter-spacing: 0.01em;
+}
+.instagram-link img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+.instagram-link:hover {
+  color: #5f4032 !important;
+  border-color: rgba(120, 89, 76, 0.34);
+  background: #fffaf4;
 }
 
 .hero-grid {
@@ -671,69 +698,63 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
   font-size: 0.86rem;
 }
 .lead-cta-foot span::before { content: "◌"; margin-right: 0.35rem; }
-.mobile-inline-form {
-  display: none !important;
-  margin-top: 1rem;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  border-radius: 12px;
-}
-.mobile-inline-form .form-status { color: #1f5f30; }
-.mobile-inline-form .form-status.error { color: #b62a2a; }
-.mobile-inline-telegram {
-  display: none;
-  margin-top: 0.7rem;
-  width: 100%;
-  justify-content: center;
-}
-
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(17, 10, 6, 0.55);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 0.75rem;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  z-index: 1200;
-}
-.modal-backdrop[hidden] { display: none; }
-.modal-window {
-  width: min(560px, 92%);
-  background: #fff;
+.lead-inline-form {
+  margin: 1.2rem auto 0;
+  max-width: 640px;
+  background: rgba(255, 246, 236, 0.96);
+  border: 1px solid rgba(255, 228, 200, 0.92);
   border-radius: 14px;
-  border: 1px solid rgba(90, 53, 40, 0.2);
-  padding: 1.1rem;
-  position: relative;
-  max-height: min(calc(100dvh - 1.5rem), calc(100vh - 1.5rem));
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  box-shadow: 0 14px 30px rgba(63, 24, 8, 0.2);
 }
-.modal-window h3 { margin: 0 0 0.35rem; font-size: 1.45rem; }
-.modal-window > p { margin: 0 0 0.8rem; color: var(--muted); }
-.modal-form { background: transparent; border: 0; padding: 0; }
-.modal-form label {
-  position: relative;
-  z-index: 1;
+.lead-inline-form .form-status { color: #1f5f30; }
+.lead-inline-form .form-status.error { color: #b62a2a; }
+.lead-socials {
+  margin-top: 0.95rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
 }
-.modal-form input,
-.modal-form textarea {
+.lead-socials-bottom { margin-top: 0.85rem; }
+.lead-top-telegram,
+.lead-top-instagram {
   position: relative;
-  z-index: 2;
-  touch-action: manipulation;
+  display: inline-flex !important;
+  align-items: center;
+  vertical-align: middle;
+  width: 196px;
+  height: 44px;
+  padding: 0 0.9rem 0 2.1rem;
+  border-radius: 12px;
+  font-weight: 700 !important;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 18px rgba(53, 24, 10, 0.2);
+  justify-content: center;
 }
-.modal-close {
+.lead-top-instagram {
+  background: #fff !important;
+  color: #6d4c3f !important;
+  border: 1px solid rgba(137, 102, 85, 0.24);
+}
+.lead-top-telegram img,
+.lead-top-instagram img {
   position: absolute;
-  top: 8px;
-  right: 10px;
-  border: 0;
-  background: transparent;
-  font-size: 1.7rem;
-  color: #88543f;
-  cursor: pointer;
+  left: 0.78rem;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+.lead-top-instagram:hover {
+  background: #fff7f1 !important;
+  color: #5a3f34 !important;
+}
+.lead-inline-form button[type="submit"] {
+  font-size: 1.08rem;
+  font-weight: 800;
+  min-height: 52px;
 }
 .lead-form { display: grid; gap: 0.75rem; padding: 1rem; }
 .lead-form label { display: grid; gap: 0.33rem; color: #273767; font-size: 0.95rem; }
@@ -753,15 +774,6 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
 }
 .lead-form input { min-height: 46px; }
 .lead-form textarea { min-height: 120px; }
-
-body.modal-open {
-  overflow: hidden;
-  overscroll-behavior: none;
-}
-
-@supports (-webkit-touch-callout: none) {
-  .modal-backdrop { backdrop-filter: none; }
-}
 .form-status { min-height: 1.2rem; color: #23562d; margin: 0.2rem 0 0; }
 .form-status.error { color: #b62a2a; }
 
@@ -830,6 +842,15 @@ body.modal-open {
     font-weight: 500 !important;
     padding: 0 0.6rem;
   }
+  .nav.is-open .telegram-link,
+  .nav.is-open .instagram-link {
+    height: 34px;
+    min-width: 0;
+    border-radius: 8px;
+    justify-content: flex-start;
+    padding: 0 0.6rem;
+    font-size: 0.8rem;
+  }
   .nav.is-open .telegram-link:hover {
     background: rgba(33, 144, 216, 0.14);
     border-color: rgba(33, 144, 216, 0.4);
@@ -861,10 +882,6 @@ body.modal-open {
   .lead-cta-card { min-height: 360px; }
   .lead-cta-content { padding: 1.6rem 1rem; }
   .lead-cta-content p { font-size: 0.95rem; }
-  .lead-cta-actions,
-  .lead-cta-foot { display: none; }
-  .mobile-inline-form { display: grid !important; }
-  .mobile-inline-telegram { display: inline-flex; }
   .lead-cta-actions { width: 100%; }
   .lead-cta-actions .btn { width: 100%; justify-content: center; text-align: center; }
   .compare-row { grid-template-columns: 1fr; }
@@ -907,15 +924,8 @@ body.modal-open {
   .lead-cta-card { min-height: 320px; border-radius: 12px; }
   .lead-cta-content { padding: 1.2rem 0.8rem; }
   .lead-cta-content p { font-size: 0.9rem; }
-  .mobile-inline-form { margin-top: 0.8rem; padding: 0.75rem; }
-  .mobile-inline-telegram { margin-top: 0.6rem; }
-  .modal-backdrop {
-    align-items: flex-start;
-    padding: max(10px, env(safe-area-inset-top)) 8px max(10px, env(safe-area-inset-bottom));
-  }
-  .modal-window {
-    width: 100%;
-    padding: 0.9rem;
-    max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 20px);
-  }
+  .lead-socials { margin-top: 0.75rem; gap: 0.5rem; }
+  .lead-top-telegram,
+  .lead-top-instagram { width: 100%; max-width: 280px; }
+  .lead-inline-form { margin-top: 0.8rem; padding: 0.75rem; }
 }

@@ -25,7 +25,11 @@
           <a href="#plans">Тарифы</a>
           <a href="#reviews">Отзывы</a>
           <a href="#questions">Вопросы</a>
-          <a href="#lead" data-open-form-on-arrive="true">Оставить заявку</a>
+          <a href="#lead">Оставить заявку</a>
+          <a href="#" class="instagram-link">
+            <img src="img/instagram_logo.png" alt="" aria-hidden="true" />
+            Instagram
+          </a>
           <a href="https://t.me/+VMwSxi3DMOVlYjZi" target="_blank" rel="noopener noreferrer" class="telegram-link">
             <img src="img/telegram_icon.png" alt="" aria-hidden="true" />
             Telegram канал
@@ -39,13 +43,8 @@
           <h1>ВНЖ Испании - легальная база в ЕС без серых схем</h1>
           <p class="lead">Digital Nomad Visa с предсказуемым путем от документов до одобрения. Сопровождаем на каждом этапе.</p>
           <div class="hero-actions">
-            <a class="btn" href="#lead" data-open-form-on-arrive="true">Проверить кейс за 7 минут</a>
+            <a class="btn" href="#lead">Проверить кейс за 7 минут</a>
             <a class="btn ghost" href="#flow">Узнать подробнее</a>
-          </div>
-          <div class="chips" data-reveal>
-            <span>Бесплатная проверка</span>
-            <span>Результат за 7 минут</span>
-            <span>Без обязательств</span>
           </div>
         </div>
         <aside class="hero-visual" data-reveal data-parallax>
@@ -244,55 +243,29 @@
             <p class="section-kicker light">Бесплатная проверка</p>
             <h2>Готов начать путь к ВНЖ Испании?</h2>
             <p>Пройди бесплатную проверку кейса за 7 минут — узнай свой маршрут и получи персональный чек-лист документов.</p>
-            <div class="lead-cta-actions">
-              <button type="button" class="btn light-btn" data-open-form>Проверить кейс бесплатно</button>
-              <a href="https://t.me/+VMwSxi3DMOVlYjZi" target="_blank" rel="noopener noreferrer" class="btn ghost light-ghost telegram-cta">
-                <img src="img/telegram_icon.png" alt="" aria-hidden="true" />
-                Telegram канал
-              </a>
-            </div>
-            <div class="lead-cta-foot">
-              <span>Без обязательств</span>
-              <span>Результат за 7 минут</span>
-            </div>
-            <form data-form class="lead-form mobile-inline-form" data-mobile-inline-form>
+            <form id="lead-form" data-form class="lead-form lead-inline-form">
               <label>Ваше Имя<input type="text" name="name" placeholder="Например: Анна" required /></label>
               <label>Номер телефона<input type="tel" name="phone" placeholder="+7 (999) 123-45-67" required /></label>
               <label>Телеграм (если есть)<input type="text" name="telegram" placeholder="@username" /></label>
               <label>Расскажите о вашей ситуации<textarea name="situation" rows="5" placeholder="Коротко опишите ваш кейс: гражданство, формат работы, цель переезда, сроки." required></textarea></label>
-              <button class="btn light-btn" type="submit">Начать проверку</button>
+              <button class="btn light-btn" type="submit">Оставить заявку</button>
               <p class="form-status" data-status></p>
             </form>
-            <a
-              href="https://t.me/+VMwSxi3DMOVlYjZi"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn ghost light-ghost telegram-cta mobile-inline-telegram"
-            >
-              <img src="img/telegram_icon.png" alt="" aria-hidden="true" />
-              Telegram канал
-            </a>
+            <div class="lead-socials lead-socials-bottom">
+              <a href="https://t.me/+VMwSxi3DMOVlYjZi" target="_blank" rel="noopener noreferrer" class="btn ghost light-ghost telegram-cta lead-top-telegram">
+                <img src="img/telegram_icon.png" alt="" aria-hidden="true" />
+                Telegram канал
+              </a>
+              <a href="#" class="btn instagram-cta lead-top-instagram">
+                <img src="img/instagram_logo.png" alt="" aria-hidden="true" />
+                Instagram
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
-
-  <div class="modal-backdrop" data-form-modal hidden>
-    <div class="modal-window" role="dialog" aria-modal="true" aria-label="Форма проверки кейса">
-      <button class="modal-close" type="button" data-close-form aria-label="Закрыть">×</button>
-      <h3>Бесплатная проверка кейса</h3>
-      <p>Оставьте заявку, и мы свяжемся с вами с персональным маршрутом.</p>
-      <form data-form class="lead-form modal-form">
-        <label>Ваше Имя<input type="text" name="name" placeholder="Например: Анна" required /></label>
-        <label>Номер телефона<input type="tel" name="phone" placeholder="+7 (999) 123-45-67" required /></label>
-        <label>Телеграм (если есть)<input type="text" name="telegram" placeholder="@username" /></label>
-        <label>Расскажите о вашей ситуации<textarea name="situation" rows="5" placeholder="Коротко опишите ваш кейс: гражданство, формат работы, цель переезда, сроки." required></textarea></label>
-        <button class="btn" type="submit">Начать проверку</button>
-        <p class="form-status" data-status></p>
-      </form>
-    </div>
-  </div>
 
   <footer class="footer">
     <div class="container">
