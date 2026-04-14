@@ -58,9 +58,11 @@ function initSmoothAnchors() {
 function initLeadModal() {
   const modal = document.querySelector("[data-form-modal]");
   const modalWindow = modal?.querySelector(".modal-window");
+  const inlineMobileForm = document.querySelector("[data-mobile-inline-form]");
   if (!modal) return;
   let lockScrollY = 0;
   let cleanupViewportListener = () => {};
+  const isMobileLayout = () => window.matchMedia("(max-width: 960px)").matches;
 
   const applyViewportHeight = () => {
     if (!modalWindow) return;
@@ -74,6 +76,17 @@ function initLeadModal() {
   };
 
   const open = () => {
+    if (isMobileLayout()) {
+      const leadSection = document.querySelector("#lead");
+      if (leadSection) {
+        leadSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      const firstInput = inlineMobileForm?.querySelector("input[name='name']");
+      if (firstInput instanceof HTMLElement) {
+        setTimeout(() => firstInput.focus(), 320);
+      }
+      return;
+    }
     lockScrollY = window.scrollY;
     modal.hidden = false;
     document.body.classList.add("modal-open");

@@ -255,6 +255,14 @@
               <span>Без обязательств</span>
               <span>Результат за 7 минут</span>
             </div>
+            <form data-form class="lead-form mobile-inline-form" data-mobile-inline-form>
+              <label>Ваше Имя<input type="text" name="name" placeholder="Например: Анна" required /></label>
+              <label>Номер телефона<input type="tel" name="phone" placeholder="+7 (999) 123-45-67" required /></label>
+              <label>Телеграм (если есть)<input type="text" name="telegram" placeholder="@username" /></label>
+              <label>Расскажите о вашей ситуации<textarea name="situation" rows="5" placeholder="Коротко опишите ваш кейс: гражданство, формат работы, цель переезда, сроки." required></textarea></label>
+              <button class="btn light-btn" type="submit">Начать проверку</button>
+              <p class="form-status" data-status></p>
+            </form>
           </div>
         </div>
       </div>
