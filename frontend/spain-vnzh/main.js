@@ -57,17 +57,40 @@ function initSmoothAnchors() {
 
 function initLeadModal() {
   const modal = document.querySelector("[data-form-modal]");
+  const modalWindow = modal?.querySelector(".modal-window");
   if (!modal) return;
   let lockScrollY = 0;
+  let cleanupViewportListener = () => {};
+
+  const applyViewportHeight = () => {
+    if (!modalWindow) return;
+    const vv = window.visualViewport;
+    const visibleHeight = vv ? vv.height : window.innerHeight;
+    modalWindow.style.maxHeight = `${Math.max(280, visibleHeight - 20)}px`;
+  };
 
   const open = () => {
     lockScrollY = window.scrollY;
     modal.hidden = false;
     document.body.classList.add("modal-open");
+    applyViewportHeight();
+    const vv = window.visualViewport;
+    if (vv) {
+      const onViewportChange = () => applyViewportHeight();
+      vv.addEventListener("resize", onViewportChange);
+      vv.addEventListener("scroll", onViewportChange);
+      cleanupViewportListener = () => {
+        vv.removeEventListener("resize", onViewportChange);
+        vv.removeEventListener("scroll", onViewportChange);
+      };
+    }
   };
   const close = () => {
     modal.hidden = true;
     document.body.classList.remove("modal-open");
+    cleanupViewportListener();
+    cleanupViewportListener = () => {};
+    if (modalWindow) modalWindow.style.maxHeight = "";
     window.scrollTo(0, lockScrollY);
   };
 
@@ -82,31 +105,12 @@ function initLeadModal() {
   modal.addEventListener("click", (event) => {
     if (event.target === modal) close();
   });
-  modal.addEventListener("focusin", (event) => {
-    const target = event.target;
-    if (!(target instanceof HTMLElement)) return;
-    if (!target.matches("input, textarea")) return;
-    if (window.innerWidth > 900) return;
-    setTimeout(() => {
-      target.scrollIntoView({ block: "center", inline: "nearest" });
-    }, 180);
-  });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !modal.hidden) close();
   });
 }
 
 function initDisableMobileZoom() {
-  let lastTouchEnd = 0;
-
-  document.addEventListener("touchend", (event) => {
-    const now = Date.now();
-    if (now - lastTouchEnd <= 300) {
-      event.preventDefault();
-    }
-    lastTouchEnd = now;
-  }, { passive: false });
-
   ["gesturestart", "gesturechange", "gestureend"].forEach((eventName) => {
     document.addEventListener(eventName, (event) => {
       event.preventDefault();

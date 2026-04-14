@@ -700,6 +700,16 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
 .modal-window h3 { margin: 0 0 0.35rem; font-size: 1.45rem; }
 .modal-window > p { margin: 0 0 0.8rem; color: var(--muted); }
 .modal-form { background: transparent; border: 0; padding: 0; }
+.modal-form label {
+  position: relative;
+  z-index: 1;
+}
+.modal-form input,
+.modal-form textarea {
+  position: relative;
+  z-index: 2;
+  touch-action: manipulation;
+}
 .modal-close {
   position: absolute;
   top: 8px;
@@ -731,7 +741,6 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
 
 body.modal-open {
   overflow: hidden;
-  touch-action: none;
   overscroll-behavior: none;
 }
 
