@@ -672,7 +672,7 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
 }
 .lead-cta-foot span::before { content: "◌"; margin-right: 0.35rem; }
 .mobile-inline-form {
-  display: none;
+  display: none !important;
   margin-top: 1rem;
   background: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(255, 255, 255, 0.45);
@@ -863,7 +863,7 @@ body.modal-open {
   .lead-cta-content p { font-size: 0.95rem; }
   .lead-cta-actions,
   .lead-cta-foot { display: none; }
-  .mobile-inline-form { display: grid; }
+  .mobile-inline-form { display: grid !important; }
   .mobile-inline-telegram { display: inline-flex; }
   .lead-cta-actions { width: 100%; }
   .lead-cta-actions .btn { width: 100%; justify-content: center; text-align: center; }
