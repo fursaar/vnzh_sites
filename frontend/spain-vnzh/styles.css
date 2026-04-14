@@ -20,6 +20,16 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
 }
+main {
+  background: linear-gradient(
+    180deg,
+    #fff7ef 0%,
+    #ffefde 24%,
+    #fdf7f0 48%,
+    #f6eee5 72%,
+    #f8f1e9 100%
+  );
+}
 
 .scroll-progress {
   position: fixed;
@@ -40,7 +50,9 @@ body {
   padding: 4rem 0 4.5rem;
 }
 .section[id] { scroll-margin-top: 110px; }
-.section.alt { background: var(--bg-strong); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.section.alt {
+  background: linear-gradient(180deg, #fff7ef 0%, #ffeddc 100%);
+}
 .section-kicker {
   margin: 0 0 0.5rem;
   text-align: center;
@@ -54,7 +66,6 @@ body {
 .hero {
   padding: 1.3rem 0 3.6rem;
   background: radial-gradient(circle at 8% 15%, #ffe3cb 0%, #fff7ef 37%), linear-gradient(120deg, #fff7ef, #ffeddc);
-  border-bottom: 1px solid var(--line);
   position: relative;
 }
 .hero.section-screen { align-items: flex-start; }
@@ -292,7 +303,9 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
 .city-card { left: -24px; top: 18%; }
 .cases-card { right: -24px; bottom: 18%; }
 
-.flow-section { background: #fdf7f0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.flow-section {
+  background: linear-gradient(180deg, #ffeddc 0%, #fdf7f0 100%);
+}
 .process-timeline {
   position: relative;
   display: grid;
@@ -346,9 +359,7 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
 .process-card p { margin: 0; color: var(--muted); font-size: 0.94rem; }
 
 .profile-section {
-  background: #f6eee5;
-  border-top: 1px solid rgba(90, 53, 40, 0.14);
-  border-bottom: 1px solid rgba(90, 53, 40, 0.14);
+  background: linear-gradient(180deg, #fdf7f0 0%, #f6eee5 100%);
 }
 .profile-grid {
   display: grid;
@@ -544,8 +555,18 @@ h2 { font-size: clamp(2rem, 3.2vw, 3.2rem); margin: 0 0 1.2rem; }
 }
 
 .faq-section {
-  border-top: 1px solid rgba(90, 53, 40, 0.18);
-  background: #f8f1e9;
+  background: linear-gradient(180deg, #f6eee5 0%, #f8f1e9 100%);
+}
+
+/* Use one continuous page gradient to avoid visible section seams */
+.section,
+.section.alt,
+.flow-section,
+.profile-section,
+.faq-section {
+  background: transparent !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
 }
 .faq-section .container {
   max-width: 920px;
