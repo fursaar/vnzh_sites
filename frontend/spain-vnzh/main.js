@@ -66,7 +66,11 @@ function initLeadModal() {
     if (!modalWindow) return;
     const vv = window.visualViewport;
     const visibleHeight = vv ? vv.height : window.innerHeight;
-    modalWindow.style.maxHeight = `${Math.max(280, visibleHeight - 20)}px`;
+    const topInset = vv ? vv.offsetTop : 0;
+    const keyboardInset = vv ? Math.max(0, window.innerHeight - (vv.height + vv.offsetTop)) : 0;
+    modal.style.paddingTop = `${Math.max(8, topInset + 8)}px`;
+    modal.style.paddingBottom = `${Math.max(8, keyboardInset + 8)}px`;
+    modalWindow.style.maxHeight = `${Math.max(280, visibleHeight - 16)}px`;
   };
 
   const open = () => {
@@ -90,6 +94,8 @@ function initLeadModal() {
     document.body.classList.remove("modal-open");
     cleanupViewportListener();
     cleanupViewportListener = () => {};
+    modal.style.paddingTop = "";
+    modal.style.paddingBottom = "";
     if (modalWindow) modalWindow.style.maxHeight = "";
     window.scrollTo(0, lockScrollY);
   };
@@ -107,6 +113,14 @@ function initLeadModal() {
   });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !modal.hidden) close();
+  });
+  modal.addEventListener("focusin", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    if (!target.matches("input, textarea")) return;
+    setTimeout(() => {
+      target.scrollIntoView({ block: "nearest", inline: "nearest" });
+    }, 120);
   });
 }
 
