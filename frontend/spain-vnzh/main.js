@@ -82,6 +82,15 @@ function initLeadModal() {
   modal.addEventListener("click", (event) => {
     if (event.target === modal) close();
   });
+  modal.addEventListener("focusin", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    if (!target.matches("input, textarea")) return;
+    if (window.innerWidth > 900) return;
+    setTimeout(() => {
+      target.scrollIntoView({ block: "center", inline: "nearest" });
+    }, 180);
+  });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !modal.hidden) close();
   });
